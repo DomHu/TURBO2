@@ -43,10 +43,10 @@ expstxt = num2str(exps,2);
 %%
 subplot(2,1,1), hold on
 for i = 1:exps           
-    plot(1:lngth,oriabu(i,:,1),'k','Linewidth',2.0)
     plot(1:lngth,bioabu(i,:,1), 'Color', [0.5 0.5 0.5],'Linewidth',1.5)
     mean_bioabu1 = mean_bioabu1+bioabu(i,:,1);
 end
+plot(1:lngth,oriabu(1,:,1),'k','Linewidth',2.0) % plot one of the original abu
 mean_bioabu1 = mean_bioabu1/exps;
 plot(1:lngth,mean_bioabu1, '-b','Linewidth',2.0)
 plot(1:lngth,numb*ones(lngth),'g')
@@ -54,14 +54,14 @@ set(gca,'XGrid','On','YGrid','On','YTick',[0 200 400 600 800 1000])
 xlabel('Core depth (cm) ');
 ylabel('Number of Particles');
 legend('Original abundance','Bioturbated abundance Species 1')
-title('Abundance of Carrier 1')
+title('Abundance of Species 1')
 
 subplot(2,1,2), hold on
 for i = 1:exps           
-    plot(1:lngth,oriabu(i,:,2),'k','Linewidth',2.0)
     plot(1:lngth,bioabu(i,:,2), 'Color', [0.5 0.5 0.5],'Linewidth',1.5)
     mean_bioabu2 = mean_bioabu2+bioabu(i,:,2);
 end
+plot(1:lngth,oriabu(1,:,2),'k','Linewidth',2.0) % plot one of the original abu
 mean_bioabu2 = mean_bioabu2/exps;
 plot(1:lngth,mean_bioabu2, '-r','Linewidth',2.0)
 plot(1:lngth,numb*ones(lngth),'g')
@@ -69,7 +69,7 @@ set(gca,'XGrid','On','YGrid','On','YTick',[0 200 400 600 800 1000])
 xlabel('Core depth (cm) ');
 ylabel('Number of Particles');
 legend('Original abundance','Bioturbated abundance Species 2')
-title('Abundance of Carrier 2')
+title('Abundance of Species 2')
 
 %%% Isotope plots:
 % % % % subplot(2,2,3), hold on
@@ -84,7 +84,7 @@ title('Abundance of Carrier 2')
 % % % % xlabel('Core depth (cm) ');
 % % % % ylabel('\delta^{18}O');
 % % % % legend('Original isotope record','Bioturbated isotope record Sp 1')
-% % % % title('Isotopes of Carrier 1')
+% % % % title('Isotopes of Species 1')
 % % % % 
 % % % % subplot(2,2,4), hold on
 % % % % for i = 1:exps           
@@ -98,7 +98,7 @@ title('Abundance of Carrier 2')
 % % % % xlabel('Core depth (cm) ');
 % % % % ylabel('\delta^{18}O');
 % % % % legend('Original isotope record','Bioturbated isotope record Sp 2')
-% % % % title('Isotopes of Carrier 2')
+% % % % title('Isotopes of Species 2')
 
 %%
 %printfilename = ['turbo2_fig1_',mxltext,'cm_',numbtxt,'carriers.tiff'];

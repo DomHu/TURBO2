@@ -1,9 +1,9 @@
 %% MATLAB script to run TURBO2
 clear
 % data = load('turbo2input_homogenousmixing.txt');
-data = load('turbo2input_impulsesequence.txt');
+% data = load('turbo2input_impulsesequence.txt');
 % data = load('turbo2input_stepsequence.txt');
-% data = load('turbo2input_termination.txt');
+data = load('turbo2input_termination.txt');
 
 %%
 age   = data(:,1);

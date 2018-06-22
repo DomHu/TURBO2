@@ -12,15 +12,15 @@ function [oriabu,bioabu,oriiso,bioiso] = turbo2(abu,iso,mxl,numb)
 
 % Martin Trauth 18 July 2012
 nrows = max(mxl)+10;        % beginning of artifical sediment column (will grow each time-step)
-ncols = max(abu)+0;        % max. # of foram tests in abu + 50
+ncols = max(abu)+150;        % max. # of foram tests in abu + 50
 % nrows = max(mxl)+0;         % beginning of artifical sediment column (will grow each time-step)
 % ncols = max(abu)+50;        % max. # of foram tests in abu + 50
 
 sedabu = NaN(nrows,ncols);
 sediso = NaN(nrows,ncols);
-h = waitbar(0,'Mixing Process ...');
+% h = waitbar(0,'Mixing Process ...');
 for i = 1:length(abu)           % mixing for loop
-  waitbar(i/length(abu)) 
+%  waitbar(i/length(abu)) 
   rncols = randperm(ncols);     % random permutation of 1, ..., ncols
   sedabu(size(sedabu,1)+1,1:ncols) = 2*ones(1,ncols);  % new layer of on top with 2.0
   sedabu(size(sedabu,1),1:abu(i)) = ones(1,abu(i));     % make 1.0 for abu
@@ -34,7 +34,7 @@ for i = 1:length(abu)           % mixing for loop
       sediso(size(sediso,1)-mxl(i)+1:size(sediso,1),j) = ni(z,j);       % same mixing with isotopes
   end    
 end
-close(h)
+% close(h)
 %
 % flipud(sedabu(:,1:5))
 % flipud(sediso(:,1:5))
