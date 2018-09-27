@@ -1,0 +1,18 @@
+
+@article{trauth_turbo2:_2013,
+	title = {{TURBO}2: {A} {MATLAB} simulation to study the effects of bioturbation on paleoceanographic time series},
+	volume = {61},
+	issn = {0098-3004},
+	shorttitle = {{TURBO}2},
+	url = {http://www.sciencedirect.com/science/article/pii/S0098300413001350},
+	doi = {10.1016/j.cageo.2013.05.003},
+	abstract = {Bioturbation (or benthic mixing) causes significant distortions in marine stable isotope signals and other palaeoceanographic records. Although the influence of bioturbation on these records is well known it has rarely been dealt systematically. The MATLAB program called TURBO2 can be used to simulate the effect of bioturbation on individual sediment particles. It can therefore be used to model the distortion of all physical, chemical, and biological signals in deep-sea sediments, such as Mg/Ca ratios and UK37-based sea-surface temperature (SST) variations. In particular, it can be used to study the distortions in paleoceanographic records that are based on individual sediment particles, such as SST records based on foraminifera assemblages. Furthermore, TURBO2 provides a tool to study the effect of benthic mixing of isotope signals such as 14C, δ18O, and δ13C, measured in a stratigraphic carrier such as foraminifera shells.},
+	urldate = {2018-02-22},
+	journal = {Computers \& Geosciences},
+	author = {Trauth, Martin H.},
+	month = dec,
+	year = {2013},
+	keywords = {Bioturbation, Deep-sea records, Foraminifera, MATLAB, Modeling, Stable oxygen isotopes},
+	pages = {1--10},
+	file = {ScienceDirect Snapshot:/home/domhu/.mozilla/firefox/itm17pp4.default/zotero/storage/4PBM8PZH/S0098300413001350.html:text/html}
+}
