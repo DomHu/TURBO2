@@ -122,14 +122,14 @@
 
 \section{TURBO2: Very brief model description and experiment setup}\label{Intro_TURBO2} % and model comparison
 \subsection{The model:}
-TURBO2 simulates the effect of bioturbation on single sediment particles \citep{trauth_turbo2:_2013}. It is a mixed layer model with instantaneous, homogenous mixing (Fig. \ref{fig:TURBO2_schematic}).
+TURBO2 simulates the effect of bioturbation on single sediment particles (Trauth, 2013). It is a mixed layer model with instantaneous, homogenous mixing (Fig. \ref{fig:TURBO2_schematic}).
 The mixing depths can vary along the length of the core. TURBO2 simulates signal distortions of isotopic signals from stratigraphic carriers (e.g. forams). It can help to recognize distortions and uncertainties 
 caused by bioturbation in combination with low sedimentation rates and low sample sizes of foraminifera shells used for isotope measurements.\\
 
 \begin{figure}[hbp]
 \begin{center}
 	\includegraphics[width=0.6\textwidth]{../figures/Sediment_column.pdf}
-	\caption{Copied from \citet{trauth_turbo2:_2013}: Generalized burrow stratigraphy in oxygenated pelagic sediments according
+	\caption{Copied from  Trauth (2013): Generalized burrow stratigraphy in oxygenated pelagic sediments according
 to Savrda et al. (1991) and Savrda (1992). The surface mixed layer (typically 5--10 cm thick) represents an interval of rapid and complete biogenic homogenization.
 The transition layer, a zone of heterogeneous mixing that extends to subsurface depths of 20--35 cm, is characterized by burrows produced by organisms that live or
 feed at greater depths in the substrate (i.e. below the mixed layer). With continued sediment accretion and associated upward migration of the mixed and transition
@@ -143,9 +143,12 @@ In the first set of experiments we simulate the influence of different bioturbat
 real abundance and the isotopic signal are covaried (e.g. impulse- or stepchange for abundance and isotopic signal at the same time). About 500 total particles (species 1 + 2) are modeled in each layer. 
 After mixing, 20 of each foram species are picked in each layer and their isotope values are measured.\\
 
-In the second set of experiments only the isotopic signal in the forams is changed (same magnitude in both species). Again about 500 total particles are modeled in each layer (now always 350 of species 1 and 150 of species 2). 
+In the second set of experiments only the isotopic signal in the forams is changed (the magnitude of both species is fixed). Again about 500 total particles are modeled in each layer (now always 350 of species 1 and 150 of species 2). 
 After mixing, in order to examine the uncertainties caused by low sample sizes, either 20 or 5 of each foram species are picked in each layer and their isotope values are measured.
-Bioturbation depths of 5cm, 10cm and 20cm are used. 
+Bioturbation depths of 5cm, 10cm and 20cm are used. \\
+
+Each experiment is simulated with 50 different random mixing matrices. Results (abundance and isotope signal) for each single run are plotted in grey. The mean result for the 50 runs is plotted in blue (species 1) and red (species 2).
+The black line is the actual change in abundance and isotope signal. The horizontal green line shows the number of carriers which have been measured.
 
 \section{Results}\label{Results} % and model comparison
 \subsection{Experiments: Covary abundance and isotope signal}
@@ -153,17 +156,67 @@ Bioturbation depths of 5cm, 10cm and 20cm are used.
 \begin{figure}[hbp]
 \begin{center}
 	\includegraphics[width=1.0\textwidth]{../figures/1point_event_5+10cm_background.pdf}
-	\caption{Example: point event + with background abundance}\label{fig:1pointevent}
+	\caption{Mixing of a point/impulse event: Species 1 has an abundance of 50 everywhere except for a single layer that has an abundance of 450 (species 2 is 450 everywhere except in the one layer 50, see black line in left and middle plot). 
+	The isotope values also change simultaneously from 3.00\textperthousand\ to 1.00\textperthousand\ for both species (black line in right plots). A constant mixing depth demonstrates the dispersal of the sediment particles over a large depth 
+	interval. Highest (lowest) concentrations occur at the base of the mixed layer, i.e. 5 or 10\,cm below their original location. For a deeper mixed layer (i.e. 10cm) the maximum concentration change is smaller. 
+	Above that peak the abundance decreases (increases) exponentially. The same trends are observed for the isotope signal - however it is almost only recorded in the abundance enhanced species 1. 
+	}\label{fig:1pointevent}
 \end{center}
 \end{figure}
-\begin{figure}[hbtp]
-\hspace*{-0.8cm}%\caption{Observations from}
-\end{figure}
+
 
 \begin{figure}[hbp]
 \begin{center}
 	\includegraphics[width=1.0\textwidth]{../figures/../figures/5point_event_5+10cm_background.pdf}
-	\caption{Example: 5 point event + with background abundance}\label{fig:5pointevent}
+	\caption{Mixing of 5 point/impulse events: All point events have the same abundance change and equal distance except the 4th event which is of smaller magnitude and closer to the previous event. 
+	The isotope values again change simultaneously from 3.00\textperthousand\ to 1.00\textperthousand\ for both species. The same horizontal shift in the signals is observed as before but the signals do not recover to background values. 
+	Therefore younger observed abundance and isotope changes are more pronounced (especially the smaller 4th perturbation has a similar observed signal).
+	For the deeper mixing experiment (z$_\mathrm{bio}=10$cm) the variability in the observed isotope signal is larger (i.e. grey experiments are more distant from the mean).
+}\label{fig:5pointevent}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[hbp]
+\begin{center}
+	\includegraphics[width=1.0\textwidth]{../figures/../figures/stepchange2_5+10cm_background.pdf}
+	\caption{Mixing of a step change: Impact of homogenized mixing of the top 5 and 10 cm of sediment on an abrupt change in the abundance of a foraminifera species in the middle of a sequence, 
+	from 450 individuals (species 1) to 50 individuals and back (isotope values change simultaneously). \\
+	Adapted from Trauth (2013): The original shift (warming) in climate, documented by the change from heavy (3.00\textperthousand\ ) to light (1.00\textperthousand\ ) isotope values, occurs at 150 cm depth, whereas the warm
+	species (Species 2) already documents this shift at $\sim 160$ cm depth; the isotope record from the cold species (Species 1), however, shows a broad transition band between $\sim 160$ and $\sim 90$ cm core depth (z$_\mathrm{bio}=10$cm).
+	The phase difference of more than $\sim 50$cm between the isotope records from the two species, which both experienced the same change in climate during deposition of the sediment layer (at 150 cm depth), 
+	can result in dramatic uncertainties when developing an oxygen isotope stratigraphy for this type of deep sea core.
+}\label{fig:stepchange}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[hbp]
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{../figures/../figures/20+40+100kyrcycle_10+20cm_background.pdf}
+	\caption{Mixing of cycles (sine waves): Abundance of species 1 and 2 and the isotope signal is changed with different periodicities. Core depth can now be translated in age. A change in z$_\mathrm{bio}$ with fixed sedimentation rate ($w$) 
+	gives the same results as a change in sedimentation rate with fixed z$_\mathrm{bio}$ (e.g. z$_\mathrm{bio}=20cm$ \& $w=1$ cm/kyr equals z$_\mathrm{bio}=10cm$ \& $w=0.5$ cm/kyr).\\
+	Deeper bioturbation (or lower sedimentation rate) results in a lower amplitude of the observed abundance and isotope signal especially in the 20 kyr cycle. 
+	}\label{fig:sine-waves}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[hbp]
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{../figures/../figures/Allcycles_combined_2+5+10+20cm_background.pdf}
+	\caption{Mixing of the three combined cycles (20, 40 and 100 kyrs) with z$_\mathrm{bio} \in \{2,5,10,20 \}$cm. Abundance of species 1 and 2 and the isotope signal is changed simultaneously. 
+	A mixed layer of 2 cm has no effect on the observed isotope signal of both species. For z$_\mathrm{bio}\geq=10cm$ the isotope records from the two species (which both experienced the same change) show discrepancies 
+	in both the magnitude (i) and the duration (l) of the change.}\label{fig:allcyclescombined}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[hbp]
+\begin{center}
+	\includegraphics[width=1.0\textwidth]{../figures/../figures/Allcycles_combined_pointevent_5+10+20cm_background.pdf}
+	\caption{Mixing of the three combined cycles (20, 40 and 100 kyrs) with z$_\mathrm{bio} \in \{5,10,20 \}$cm. Abundance of species 1 and 2 and the isotope signal is changed simultaneously. Additionaly we change the abundance and isotope signal 
+	in discrete pulse events. Only the isotope record of the abundance enhanced species shows the pulse event (c, f). However, if the mixed layer is very deep (z$_\mathrm{bio}\geq=20cm$) the pulse event is not visible anymore (i).}\label{fig:allcycles+pointevent}
 \end{center}
 \end{figure}
 \begin{figure}[hbtp]
@@ -172,12 +225,47 @@ Bioturbation depths of 5cm, 10cm and 20cm are used.
 
 \begin{figure}[hbp]
 \begin{center}
-	\includegraphics[width=1.0\textwidth]{../figures/../figures/stepchange2_5+10cm_background.pdf}
-	\caption{Example: Step change.}\label{fig:5pointevent}
+	\includegraphics[width=1.0\textwidth]{../figures/../figures/Allcycles_combined_stepevent_bigger_5+10+20cm_background.pdf}
+	\caption{Mixing of the three combined cycles (20, 40 and 100 kyrs) with z$_\mathrm{bio} \in \{5,10,20 \}$cm. Abundance of species 1 and 2 and the isotope signal is changed simultaneously. Additionaly we change the abundance and isotope signal 
+	at various steps (black numbers in a, b, c). }\label{fig:5pointevent}
 \end{center}
 \end{figure}
-\begin{figure}[hbtp]
-\hspace*{-0.8cm}%\caption{Observations from}
+
+
+\newpage
+\subsection{Experiments: Only change isotope signal - fixed abundance}
+Only the isotopic signal in the forams is changed (same magnitude in both species). Again about 500 total particles are modeled in each layer (now always 350 of species 1 and 150 of species 2). 
+After mixing, in order to examine the uncertainties caused by low sample sizes, either 20 or 5 of each foram species are picked in each layer and their isotope values are measured.
+Bioturbation depths of 5cm, 10cm and 20cm are used. 
+
+\begin{figure}[hbp]
+\begin{center}
+	\includegraphics[width=1.0\textwidth]{../figures/../figures/JustABU_pointevent1+5.pdf}
+	\caption{Example: Step changes - all cycles combined with z$_\mathrm{bio} \in \{5,10\}$cm and sample size of 20 and 5. }\label{fig:5pointevent}
+\end{center}
+\end{figure}
+
+
+
+\begin{figure}[hbp]
+\begin{center}
+	\includegraphics[width=1.0\textwidth]{../figures/../figures/JustABU_3ycles_combined.pdf}
+	\caption{Example: All cycles combined with z$_\mathrm{bio} \in \{10,20 \}$cm and sample size of 20 and 5. }\label{fig:5pointevent}
+\end{center}
+\end{figure}
+
+\begin{figure}[hbp]
+\begin{center}
+	\includegraphics[width=1.0\textwidth]{../figures/../figures/JustABU_3ycles_combined_pointevents.pdf}
+	\caption{Example: Point events - all cycles combined with z$_\mathrm{bio} \in \{10,20 \}$cm and sample size of 20 and 5. }\label{fig:5pointevent}
+\end{center}
+\end{figure}
+
+\begin{figure}[hbp]
+\begin{center}
+	\includegraphics[width=1.0\textwidth]{../figures/../figures/JustABU_3ycles_combined_gradual.pdf}
+	\caption{Example: Step changes - all cycles combined with z$_\mathrm{bio} \in \{10,20 \}$cm and sample size of 20 and 5. }\label{fig:5pointevent}
+\end{center}
 \end{figure}
 \newpage
 %% The Bibliography
@@ -185,9 +273,10 @@ Bioturbation depths of 5cm, 10cm and 20cm are used.
 %% ==> You need to run BibTeX for this (Project | Properties... | Uses BibTeX)
 %\addcontentsline{toc}{chapter}{Bibliography} %'Bibliography' into toc
 %\nocite{*} %Even non-cited BibTeX-Entries will be shown.
-\bibliographystyle{apalike} %Style of Bibliography: plain / apalike / amsalpha / ...
-%\bibliography{/home/alex/BRL/bib/literature/VORbib.bib} %You need a file 'literature.bib' for this.
-\bibliography{TURBO_050618}
+
+% \bibliographystyle{apalike} %Style of Bibliography: plain / apalike / amsalpha / ...
+% %\bibliography{/home/alex/BRL/bib/literature/VORbib.bib} %You need a file 'literature.bib' for this.
+% \bibliography{TURBO_050618}
 
 
 \end{document}
