@@ -1,7 +1,7 @@
 %% MATLAB script to run multiple experiments of TURBO2
 
 %% 1000 particles
-% turbo2script_multiple('data/turbo2input_1impulsesequence_5cm.txt',50,50)
+turbo2script_multiple('data/turbo2input_1impulsesequence_5cm.txt',50,50)
 % turbo2script_multiple('data/turbo2input_1impulsesequence_10cm.txt',50,50)
 % turbo2script_multiple('data/turbo2input_2impulsesequence_5cm.txt',50,50)
 % turbo2script_multiple('data/turbo2input_2impulsesequence_10cm.txt',50,50)

@@ -1,13 +1,21 @@
 function run_multiple_turbo2_exps_fromexceldata(datafile)
 %% MATLAB script to run multiple experiments of TURBO2 using data in an excel file
+% specify below where the data one wants to use can be found in excel file
 
+% datafile = INPUT FILE WITH REQUIRED DATA
 
-% data=xlsread(datafile,'zbio=5','C4:F63');
-% data_zbio10=data;
-% data_zbio10(:,2)=10;
-% % turbo2script_multiple_fromexceldata(data, 20, 50, 'pointevent1')
-% turbo2script_multiple_fromexceldata(data_zbio10, 20, 50, 'pointevent1')
-% turbo2script_multiple_fromexceldata(data_zbio10, 5, 50, 'pointevent1')
+%   Example
+%           run_multiple_turbo2_exps_fromexceldata('data/1_turbo2input_no_abu_change.xlsx')
+%           this calls the function
+%           turbo2script_multiple_fromexceldata(data, nocarriers, noexps, expname)
+
+data=xlsread(datafile,'zbio=5','C4:F203');
+data_zbio10=data;
+data_zbio10(:,2)=10;
+turbo2script_multiple_fromexceldata_3zbio(data, 500, 100, 'pointevent1')
+%turbo2script_multiple_fromexceldata(data_zbio10, 20, 50, 'pointevent1')
+%turbo2script_multiple_fromexceldata(data_zbio10, 5, 50, 'pointevent1')
+
 % 
 % data=xlsread(datafile,'zbio=5','H4:K63');
 % data_zbio10=data;
@@ -59,36 +67,36 @@ function run_multiple_turbo2_exps_fromexceldata(datafile)
 % turbo2script_multiple_fromexceldata(data_zbio10, 20, 50, '100kyrs')
 % turbo2script_multiple_fromexceldata(data_zbio10, 5, 50, '100kyrs')
 
-data=xlsread(datafile,'zbio=5','AQ4:AT204');
-data_zbio10=data;
-data_zbio10(:,2)=10;
-data_zbio20=data;
-data_zbio20(:,2)=20;
-turbo2script_multiple_fromexceldata(data, 20, 50, '3_orbital_cycles')
-turbo2script_multiple_fromexceldata(data_zbio10, 20, 50, '3_orbital_cycles')
-turbo2script_multiple_fromexceldata(data_zbio10, 5, 50, '3_orbital_cycles')
-turbo2script_multiple_fromexceldata(data_zbio20, 20, 50, '3_orbital_cycles')
-turbo2script_multiple_fromexceldata(data_zbio20, 5, 50, '3_orbital_cycles')
+% data=xlsread(datafile,'zbio=5','AQ4:AT204');
+% data_zbio10=data;
+% data_zbio10(:,2)=10;
+% data_zbio20=data;
+% data_zbio20(:,2)=20;
+% turbo2script_multiple_fromexceldata(data, 20, 50, '3_orbital_cycles')
+% turbo2script_multiple_fromexceldata(data_zbio10, 20, 50, '3_orbital_cycles')
+% turbo2script_multiple_fromexceldata(data_zbio10, 5, 50, '3_orbital_cycles')
+% turbo2script_multiple_fromexceldata(data_zbio20, 20, 50, '3_orbital_cycles')
+% turbo2script_multiple_fromexceldata(data_zbio20, 5, 50, '3_orbital_cycles')
+% 
+% data=xlsread(datafile,'zbio=5','AV4:AY204');
+% data_zbio10=data;
+% data_zbio10(:,2)=10;
+% data_zbio20=data;
+% data_zbio20(:,2)=20;
+% turbo2script_multiple_fromexceldata(data, 20, 50, '3_orbital_cycles+pointevent')
+% turbo2script_multiple_fromexceldata(data_zbio10, 20, 50, '3_orbital_cycles+pointevent')
+% turbo2script_multiple_fromexceldata(data_zbio10, 5, 50, '3_orbital_cycles+pointevent')
+% turbo2script_multiple_fromexceldata(data_zbio20, 20, 50, '3_orbital_cycles+pointevent')
+% turbo2script_multiple_fromexceldata(data_zbio20, 5, 50, '3_orbital_cycles+pointevent')
 
-data=xlsread(datafile,'zbio=5','AV4:AY204');
-data_zbio10=data;
-data_zbio10(:,2)=10;
-data_zbio20=data;
-data_zbio20(:,2)=20;
-turbo2script_multiple_fromexceldata(data, 20, 50, '3_orbital_cycles+pointevent')
-turbo2script_multiple_fromexceldata(data_zbio10, 20, 50, '3_orbital_cycles+pointevent')
-turbo2script_multiple_fromexceldata(data_zbio10, 5, 50, '3_orbital_cycles+pointevent')
-turbo2script_multiple_fromexceldata(data_zbio20, 20, 50, '3_orbital_cycles+pointevent')
-turbo2script_multiple_fromexceldata(data_zbio20, 5, 50, '3_orbital_cycles+pointevent')
-
-data=xlsread(datafile,'zbio=5','BA4:BD204');
-data_zbio10=data;
-data_zbio10(:,2)=10;
-data_zbio20=data;
-data_zbio20(:,2)=20;
-turbo2script_multiple_fromexceldata(data, 20, 50, '3_orbital_cycles+gradualchanges')
-turbo2script_multiple_fromexceldata(data_zbio10, 20, 50, '3_orbital_cycles+gradualchanges')
-turbo2script_multiple_fromexceldata(data_zbio10, 5, 50, '3_orbital_cycles+gradualchanges')
-turbo2script_multiple_fromexceldata(data_zbio20, 20, 50, '3_orbital_cycles+gradualchanges')
-turbo2script_multiple_fromexceldata(data_zbio20, 5, 50, '3_orbital_cycles+gradualchanges')
-
+% data=xlsread(datafile,'zbio=5','BA4:BD204');
+% data_zbio10=data;
+% data_zbio10(:,2)=10;
+% data_zbio20=data;
+% data_zbio20(:,2)=20;
+% turbo2script_multiple_fromexceldata(data, 20, 50, '3_orbital_cycles+gradualchanges')
+% turbo2script_multiple_fromexceldata(data_zbio10, 20, 50, '3_orbital_cycles+gradualchanges')
+% turbo2script_multiple_fromexceldata(data_zbio10, 5, 50, '3_orbital_cycles+gradualchanges')
+% turbo2script_multiple_fromexceldata(data_zbio20, 20, 50, '3_orbital_cycles+gradualchanges')
+% turbo2script_multiple_fromexceldata(data_zbio20, 5, 50, '3_orbital_cycles+gradualchanges')
+% 

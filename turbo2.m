@@ -12,7 +12,7 @@ function [oriabu,bioabu,oriiso,bioiso] = turbo2(abu,iso,mxl,numb)
 
 % Martin Trauth 18 July 2012
 nrows = max(mxl)+10;        % beginning of artifical sediment column (will grow each time-step)
-ncols = max(abu)+150;        % max. # of foram tests in abu + 50
+ncols = max(abu); %+150;        % max. # of foram tests in abu + 50
 % nrows = max(mxl)+0;         % beginning of artifical sediment column (will grow each time-step)
 % ncols = max(abu)+50;        % max. # of foram tests in abu + 50
 
@@ -39,7 +39,6 @@ end
 % flipud(sedabu(:,1:5))
 % flipud(sediso(:,1:5))
 %
-if(true)
 clear ns ni i j mxl z
 sedabu = sedabu(nrows+1:end,:); % remove initial sediment pile 
 sediso = sediso(nrows+1:end,:); % remove initial sediment pile 
@@ -76,7 +75,6 @@ oriiso = flipud(oriiso);
 bioabu = flipud(bioabu);
 bioiso = flipud(bioiso);
 
-end
 
 
 
