@@ -12,26 +12,26 @@ t = 0 : 0.01 : 2.0;
 % Define sine wave parameters.
 f1 = 5; % per second
 T1 = 1/f1; % period, seconds
-amp1 = 200; % amplitude
+amp1 = 500; % amplitude
 f2 = 2.5; % per second
 T2 = 1/f2; % period, seconds
-amp2 = 200; % amplitude
+amp2 = 500; % amplitude
 f3 = 1; % per second
 T3 = 1/f3; % period, seconds
-amp3 = 200; % amplitude
+amp3 = 500; % amplitude
 
-shift = 250;
+shift = 500;
 
 % Make signals.
-signal1 = amp1 * sin(2*pi*t/T1) + shift;
-signal2 = amp2 * sin(2*pi*t/T2) + shift;
-signal3 = amp3 * sin(2*pi*t/T3) + shift;
-signal = signal1 + signal2 + signal3;
-plot(t, signal1, 'r.-', 'LineWidth', 2, 'MarkerSize', 16);
+kyrs20 = amp1 * sin(2*pi*t/T1) + shift;
+kyrs40 = amp2 * sin(2*pi*t/T2) + shift;
+kyrs100 = amp3 * sin(2*pi*t/T3) + shift;
+combinedsignal = kyrs20 + kyrs40 + kyrs100;
+plot(t, kyrs20, 'r.-', 'LineWidth', 2, 'MarkerSize', 16);
 hold on;
-plot(t, signal2, 'm.-', 'LineWidth', 2, 'MarkerSize', 16);
-plot(t, signal3, 'g.-', 'LineWidth', 2, 'MarkerSize', 16);
-plot(t, signal, 'b.-', 'LineWidth', 2, 'MarkerSize', 16);
+plot(t, kyrs40, 'm.-', 'LineWidth', 2, 'MarkerSize', 16);
+plot(t, kyrs100, 'g.-', 'LineWidth', 2, 'MarkerSize', 16);
+plot(t, combinedsignal, 'b.-', 'LineWidth', 2, 'MarkerSize', 16);
 grid on;
 title('Sine Waves', 'FontSize', fontSize);
 xlabel('Time', 'FontSize', fontSize);

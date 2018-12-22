@@ -11,8 +11,8 @@ function [oriabu,bioabu,oriiso,bioiso] = turbo2(abu,iso,mxl,numb)
 % BIOISO = bioturbated isotope signature of both carrier types 1 and 2
 
 % Martin Trauth 18 July 2012
-nrows = max(mxl)+10;        % beginning of artifical sediment column (will grow each time-step)
-ncols = max(abu); %+150;        % max. # of foram tests in abu + 50
+nrows = max(mxl);%+10;        % beginning of artifical sediment column (will grow each time-step)
+ncols = max(abu);%+50;        % max. # of foram tests in abu + 50
 % nrows = max(mxl)+0;         % beginning of artifical sediment column (will grow each time-step)
 % ncols = max(abu)+50;        % max. # of foram tests in abu + 50
 

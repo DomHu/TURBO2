@@ -8,28 +8,171 @@ function run_multiple_turbo2_exps_fromexceldata(datafile)
 %           run_multiple_turbo2_exps_fromexceldata('data/1_turbo2input_no_abu_change.xlsx')
 %           this calls the function
 %           turbo2script_multiple_fromexceldata(data, nocarriers, noexps, expname)
+Exps = 100;
+sample = 20;
 
-data=xlsread(datafile,'zbio=5','C4:F203');
-data_zbio10=data;
-data_zbio10(:,2)=10;
-turbo2script_multiple_fromexceldata_3zbio(data, 500, 100, 'pointevent1')
-%turbo2script_multiple_fromexceldata(data_zbio10, 20, 50, 'pointevent1')
-%turbo2script_multiple_fromexceldata(data_zbio10, 5, 50, 'pointevent1')
+
+% %% No ABU change - use: 2_turbo2input_no_abu_change_10k_1510.xlsx
+% data=xlsread(datafile,'zbio=5','C4:F203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'pointevent1_NOabu-change')
+% 
+% 
+% data=xlsread(datafile,'zbio=5','H4:K203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'pointevent_multiple_NOabu-change')
+% 
+%     
+% data=xlsread(datafile,'zbio=5','M4:P203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'step-sequence-up_NOabu-change')
+
+% data=xlsread(datafile,'zbio=5','R4:U203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'step-sequence-down_NOabu-change')
+
+% data=xlsread(datafile,'zbio=5','Y4:AB203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'gradual-change-up_NOabu-change')
+% 
+% data=xlsread(datafile,'zbio=5','AD4:AG203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'gradual-change-down_NOabu-change')
+% 
+% data=xlsread(datafile,'zbio=5','AN4:AQ203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, '40kyrs_NOabu-change')
+% 
+data=xlsread(datafile,'zbio=5','AX4:BA203');
+turbo2script_multiple_fromexceldata(data, sample, Exps, 'multiple-step_up_NOabu-change')
+
+
+% %% In-phase
+% data=xlsread(datafile,'inphase','C4:F203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'pointevent1_abu-change')
 
 % 
-% data=xlsread(datafile,'zbio=5','H4:K63');
-% data_zbio10=data;
-% data_zbio10(:,2)=10;
-% % turbo2script_multiple_fromexceldata(data, 20, 50, 'pointevent2')
-% turbo2script_multiple_fromexceldata(data_zbio10, 20, 50, 'pointevent2')
-% turbo2script_multiple_fromexceldata(data_zbio10, 5, 50, 'pointevent2')
+% data=xlsread(datafile,'inphase','H4:K203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'pointevent_multiple_abu-change')
 % 
-% data=xlsread(datafile,'zbio=5','M4:P63');
-% data_zbio10=data;
-% data_zbio10(:,2)=10;
-% % turbo2script_multiple_fromexceldata(data, 20, 50, 'pointevent5')
-% turbo2script_multiple_fromexceldata(data_zbio10, 20, 50, 'pointevent5')
-% turbo2script_multiple_fromexceldata(data_zbio10, 5, 50, 'pointevent5')
+%     
+% data=xlsread(datafile,'inphase','M4:P203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'step-sequence-up_abu-change')
+% 
+% data=xlsread(datafile,'inphase','R4:U203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'step-sequence-down_abu-change')
+% 
+% data=xlsread(datafile,'inphase','Y4:AB203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'gradual-change-up_abu-change')
+
+% data=xlsread(datafile,'inphase','AD4:AG203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'gradual-change-down_abu-change')
+
+% data=xlsread(datafile,'inphase','AI4:AL203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, '40kyrs_abu-change')
+
+% data=xlsread(datafile,'inphase','AX4:BA203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'multiple-step_up_abu-change')
+
+
+%% Offset 10cm
+% 
+% data=xlsread(datafile,'offset','C4:F203');
+% turbo2script_multiple_fromexceldata(data, 20, Exps, 'pointevent1_offset')
+% 
+% data=xlsread(datafile,'offset','H4:K203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'pointevent_multiple_offset')
+%     
+% data=xlsread(datafile,'offset','M4:P203');
+% turbo2script_multiple_fromexceldata(data, 20, Exps, 'step-sequence-up_offset20cm')
+% 
+% data=xlsread(datafile,'offset','R4:U203');
+% turbo2script_multiple_fromexceldata(data, 20, Exps, 'step-sequence-down_offset')
+% 
+% data=xlsread(datafile,'offset','Y4:AB203');
+% turbo2script_multiple_fromexceldata(data, 20, Exps, 'gradual-change-up_offset')
+
+% data=xlsread(datafile,'offset','AD4:AG203');
+% turbo2script_multiple_fromexceldata(data, 20, Exps, 'gradual-change-down_offset')
+
+% data=xlsread(datafile,'offset','AI4:AL203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, '40kyrs_abu-change_offset20')
+% 
+% data=xlsread(datafile,'offset','BE4:BH203');
+% turbo2script_multiple_fromexceldata(data, 20, Exps, 'multiple-step-up_offsetca4cmcm')
+
+%% Offset 2cm
+% % 
+% data=xlsread(datafile,'offset_2cm','C4:F203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'pointevent1_offset_2cm')
+% 
+% data=xlsread(datafile,'offset_2cm','H4:K203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'pointevent_multiple_offset_2cm')
+%     
+% data=xlsread(datafile,'offset_2cm','M4:P203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'step-sequence-up_offset_2cm')
+% 
+% data=xlsread(datafile,'offset_2cm','R4:U203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'step-sequence-down_offset_2cm')
+% 
+% data=xlsread(datafile,'offset_2cm','Y4:AB203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'gradual-change-up_offset_2cm')
+% 
+% data=xlsread(datafile,'offset_2cm','AD4:AG203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'gradual-change-down_offset_2cm')
+% 
+% data=xlsread(datafile,'offset_2cm','AI4:AL203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, '40kyrs_abu-change_offset_2cm')
+% 
+% data=xlsread(datafile,'offset_2cm','AX4:BA203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'multiple-step-up_offset_2cm')
+% 
+
+%% Offset 5cm
+% 
+% data=xlsread(datafile,'offset_5cm','C4:F203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'pointevent1_offset_5cm')
+% 
+% data=xlsread(datafile,'offset_5cm','H4:K203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'pointevent_multiple_offset_5cm')
+%     
+% data=xlsread(datafile,'offset_5cm','M4:P203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'step-sequence-up_offset_5cm')
+% 
+% data=xlsread(datafile,'offset_5cm','R4:U203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'step-sequence-down_offset_5cm')
+% 
+% data=xlsread(datafile,'offset_5cm','Y4:AB203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'gradual-change-up_offset_5cm')
+% 
+% data=xlsread(datafile,'offset_5cm','AD4:AG203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'gradual-change-down_offset_5cm')
+% 
+% data=xlsread(datafile,'offset_5cm','AI4:AL203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, '40kyrs_abu-change_offset_5cm')
+% 
+% data=xlsread(datafile,'offset_5cm','AX4:BA203');
+% turbo2script_multiple_fromexceldata(data, sample, Exps, 'multiple-step-up_offset_5cm')
+
+
+%% anti-phase
+
+% data=xlsread(datafile,'outphase','C4:F203');
+% turbo2script_multiple_fromexceldata_3zbio(data, 20, Exps, 'pointevent1_antiphase')
+% 
+% 
+% data=xlsread(datafile,'outphase','H4:K203');
+% turbo2script_multiple_fromexceldata(data, 20, Exps, 'pointevent_multiple_antiphase')
+% 
+%     
+% data=xlsread(datafile,'outphase','M4:P203');
+% turbo2script_multiple_fromexceldata(data, 20, Exps, 'step-sequence-up_antiphase')
+% 
+% data=xlsread(datafile,'outphase','R4:U203');
+% turbo2script_multiple_fromexceldata(data, 20, Exps, 'step-sequence-down_antiphase')
+% 
+% data=xlsread(datafile,'outphase','Y4:AB203');
+% turbo2script_multiple_fromexceldata(data, 20, Exps, 'gradual-change-up_antiphase')
+% 
+% 
+% data=xlsread(datafile,'outphase','AD4:AG203');
+% turbo2script_multiple_fromexceldata(data, 20, Exps, 'gradual-change-down_antiphase')
+
+
+
 % 
 % data=xlsread(datafile,'zbio=5','R4:U203');
 % data_zbio10=data;

@@ -72,23 +72,24 @@ mxltext2 = num2str(mean(mxl2));
 mxltext3 = num2str(mean(mxl3));
 numbtxt = num2str(numb,2);
 expstxt = num2str(exps,2);
+abutxt = num2str(max(abu),2);
 
 set(0,'DefaultAxesFontSize',16)
 
 %%  Plot isotope plots only and just for species 1 (no abundance change here)
 figure, hold on
 for i = 1:exps           
-    % mxl1
+% mxl1
     plot(1:lngth,bioiso(i,:,1), 'Color', [1.0 0.8 0.8],'Linewidth',1.5)
 %    plot(1:lngth,bioiso(i,:,2), 'Color', [0.7 0.7 0.7],'Linewidth',1.5)
   	mean_bioiso1_mxl1 = mean_bioiso1_mxl1+bioiso(i,:,1);
-%    mean_bioiso2_mxl1 = mean_bioiso2_mxl1+bioiso(i,:,2);
-    % mxl2
+%    mean_bioiso2_mxl1 = mean_bioiso2_mxl1+bioiso(i,:,2);        
+% mxl2
     plot(1:lngth,bioiso2(i,:,1), 'Color', [0.8 1.0 0.8],'Linewidth',1.5)
 %    plot(1:lngth,bioiso2(i,:,2), 'Color', [0.7 0.7 0.7],'Linewidth',1.5)
   	mean_bioiso1_mxl2 = mean_bioiso1_mxl2+bioiso2(i,:,1);
 %    mean_bioiso2_mxl2 = mean_bioiso2_mxl2+bioiso2(i,:,2);
-    % mxl3
+% mxl3
     plot(1:lngth,bioiso3(i,:,1), 'Color', [0.8 0.8 1.0],'Linewidth',1.5)
 %   plot(1:lngth,bioiso3(i,:,2), 'Color', [0.7 0.7 0.7],'Linewidth',1.5)
   	mean_bioiso1_mxl3 = mean_bioiso1_mxl3+bioiso3(i,:,1);
@@ -111,7 +112,10 @@ mean_bioiso2_mxl3 = mean_bioiso2_mxl3/exps;
 plot(1:lngth,mean_bioiso1_mxl3, '-b','Linewidth',2.0)
 %plot(1:lngth,mean_bioiso2_mxl3, '--r','Linewidth',2.0)
 
-set(gca,'YDir','Reverse','XGrid','On','YGrid','On','Box','On', 'XLim',[0,200])
+
+
+%set(gca,'YDir','Reverse','XGrid','On','YGrid','On','Box','On', 'XLim',[0,200])
+set(gca,'YDir','Reverse','XGrid','On','YGrid','On','Box','On', 'XLim',[0,200], 'YLim',[1.0,3.0],'YTick',[1.0 1.5 2.0 2.5 3.0])
 xlabel('Core depth (cm) ');
 ylabel('\delta^{18}O');
 titletxt = ['Isotopes of Carriers 1+2, ',mxltext,...
@@ -120,8 +124,9 @@ title(titletxt)
 %legend('Original Isotopes','carriers 1','carriers 2')
 
 
-printfilename = [expname,'_',numbtxt,'carriers_',expstxt,'Exps_fig2_iso'];
+printfilename = ['3zbio_',expname,'_',abutxt,'abu_',numbtxt,'carriers_',expstxt,'Exps'];
 % print('-depsc', printfilename); % save figure in this folder
+save(['data/mat/',printfilename,'.mat'],'printfilename', 'lngth','bioiso','bioiso2','bioiso3', 'oriiso', 'mean_bioiso1_mxl1', 'mean_bioiso1_mxl2', 'mean_bioiso1_mxl3','expname', 'exps', 'bioabu','bioabu2','bioabu3', 'oriabu', 'oriabu2', 'oriabu3', 'mean_bioabu1_mxl1', 'mean_bioabu1_mxl2', 'mean_bioabu1_mxl3')
 print('-depsc', ['output/',printfilename]);   % save figure in extra output folder
 % print('-dtiff',printfilename)
 % 

@@ -25,8 +25,10 @@ function turbo2script_multiple_fromexceldata(data, nocarriers, noexps, expname)
 
 %%
 
-plot_abu_iso = false;       % plot the abundance and isotope figures?
+plot_abu = true;            % plot the abundance figures?
+plot_abu_iso = false;       % plot the abundance and isotope figures - in separate figs?
 plot_just_mean = false;     % only plot the mean result, not every single experiment in grey
+plot_abu_and_iso = false;    % plot the abundance and isotope figures in one figure
 
 age   = data(:,1);
 mxl   = data(:,2);
@@ -39,6 +41,7 @@ exps = noexps;     % number of different experiments
 
 %%
 for i = 1:exps           
+    i
     [oriabu(i,:,:),bioabu(i,:,:),oriiso(i,:,:),bioiso(i,:,:)] = turbo2(abu,iso,mxl,numb);
 end
 %%
@@ -53,6 +56,7 @@ mean_bioiso2 = zeros(1,lngth);
 mxltext = num2str(mean(mxl));
 numbtxt = num2str(numb,2);
 expstxt = num2str(exps,2);
+abutxt = num2str(max(abu),2);
 
 set(0,'DefaultAxesFontSize',16)
 
@@ -62,8 +66,8 @@ mean_bioiso2 = zeros(1,lngth);
 
 figure, hold on
 for i = 1:exps           
-    plot(1:lngth,bioiso(i,:,1), 'Color', [0.5 0.5 0.5],'Linewidth',1.5)
-    plot(1:lngth,bioiso(i,:,2), 'Color', [0.7 0.7 0.7],'Linewidth',1.5)
+    plot(1:lngth,bioiso(i,:,1), 'Color', [0.8 0.8 1.0],'Linewidth',1.5)
+    plot(1:lngth,bioiso(i,:,2), 'Color', [1.0 0.8 0.8],'Linewidth',1.5)
   	mean_bioiso1 = mean_bioiso1+bioiso(i,:,1);
     mean_bioiso2 = mean_bioiso2+bioiso(i,:,2);
 end
@@ -72,20 +76,142 @@ mean_bioiso1 = mean_bioiso1/exps;
 mean_bioiso2 = mean_bioiso2/exps;
 plot(1:lngth,mean_bioiso1, '-b','Linewidth',2.0)
 plot(1:lngth,mean_bioiso2, '--r','Linewidth',2.0)
-set(gca,'YDir','Reverse','XGrid','On','YGrid','On','Box','On', 'XLim',[0,200])
+set(gca,'YDir','Reverse','XGrid','On','YGrid','On','Box','On', 'XLim',[0,200], 'YLim',[1.0,3.0],'YTick',[1.0 1.5 2.0 2.5 3.0])
 xlabel('Core depth (cm) ');
 ylabel('\delta^{18}O');
 titletxt = ['Isotopes of Carriers 1+2, ',mxltext,...
     ' cm Mixed Layer, ',numbtxt,' Carriers'];
-title(titletxt)
+% title(titletxt)
 %legend('Original Isotopes','carriers 1','carriers 2')
 
 
-printfilename = [expname,'_zbio',mxltext,'_',numbtxt,'carriers_',expstxt,'Exps_fig2_iso'];
+printfilename = [expname,'_',abutxt,'abu_',numbtxt,'carriers_',expstxt,'Exps_ISO'];
 % print('-depsc', printfilename); % save figure in this folder
 print('-depsc', ['output/',printfilename]);   % save figure in extra output folder
 % print('-dtiff',printfilename)
 % 
+
+%% Plot abundance plots
+if(plot_abu)
+   
+figure
+hold on
+for i = 1:exps           
+    plot(1:lngth,bioabu(i,:,1), 'Color', [0.8 0.8 1.0],'Linewidth',2.0)
+    mean_bioabu1 = mean_bioabu1+bioabu(i,:,1);
+end
+plot(1:lngth,oriabu(1,:,1),'k','Linewidth',3.0) % plot one of the original abu
+mean_bioabu1 = mean_bioabu1/exps;
+plot(1:lngth,mean_bioabu1, '-b','Linewidth',3.0)
+plot(1:lngth,numb*ones(lngth),'g')
+set(gca,'XGrid','On','YGrid','On', 'YLim',[0,500],'YTick',[0 100 200 300 400 500])
+% set(gca,'XGrid','On','YGrid','On', 'XLim',[0,200], 'YLim',[0,600],'YTick',[0 200 400 600])
+% set(gca,'XGrid','On','YGrid','On','YTick',[0 200 400 600 800 1000])
+xlabel('Core depth (cm) ');
+ylabel('Number of Particles');
+% legend('Original abundance','Bioturbated abundance Species 1')
+title('Abundance of Species 1')
+
+%printfilename = ['turbo2_fig1_',mxltext,'cm_',numbtxt,'carriers.tiff'];
+printfilename = [expname,'_',abutxt,'abu_',numbtxt,'carriers_',expstxt,'Exps_SP1'];
+% print('-dtiff',[printfilename,'.tiff']);
+% print('-depsc', printfilename);
+print('-depsc', ['output/', printfilename]);
+
+ 
+figure
+hold on
+for i = 1:exps           
+    plot(1:lngth,bioabu(i,:,2), 'Color', [1.0 0.8 0.8],'Linewidth',2.0)
+    mean_bioabu2 = mean_bioabu2+bioabu(i,:,2);
+end
+plot(1:lngth,oriabu(1,:,2),'k','Linewidth',3.0) % plot one of the original abu
+mean_bioabu2 = mean_bioabu2/exps;
+plot(1:lngth,mean_bioabu2, '-r','Linewidth',3.0)
+plot(1:lngth,numb*ones(lngth),'g')
+set(gca,'XGrid','On','YGrid','On', 'YLim',[0,500],'YTick',[0 100 200 300 400 500])
+% set(gca,'XGrid','On','YGrid','On', 'XLim',[0,200], 'YLim',[0,600],'YTick',[0 200 400 600])
+% set(gca,'XGrid','On','YGrid','On','YTick',[0 200 400 600 800 1000])
+xlabel('Core depth (cm) ');
+ylabel('Number of Particles');
+% legend('Original abundance','Bioturbated abundance Species 2')
+title('Abundance of Species 2')
+
+%printfilename = ['turbo2_fig1_',mxltext,'cm_',numbtxt,'carriers.tiff'];
+printfilename = [expname,'_',abutxt,'abu_',numbtxt,'carriers_',expstxt,'Exps_SP2'];
+% print('-dtiff',[printfilename,'.tiff']);
+% print('-depsc', printfilename);
+print('-depsc', ['output/', printfilename]);
+
+
+
+end
+
+%% Plot abundance and isotope plots in one figure
+if(plot_abu_and_iso)
+    
+figure
+subplot(1, 3,1), hold on
+for i = 1:exps           
+    plot(1:lngth,bioabu(i,:,1), 'Color', [0.8 0.8 1.0],'Linewidth',2.0)
+    mean_bioabu1 = mean_bioabu1+bioabu(i,:,1);
+end
+plot(1:lngth,oriabu(1,:,1),'k','Linewidth',3.0) % plot one of the original abu
+mean_bioabu1 = mean_bioabu1/exps;
+plot(1:lngth,mean_bioabu1, '-b','Linewidth',3.0)
+plot(1:lngth,numb*ones(lngth),'g')
+set(gca,'XGrid','On','YGrid','On', 'YLim',[0,500],'YTick',[0 100 200 300 400 500])
+% set(gca,'XGrid','On','YGrid','On', 'XLim',[0,200], 'YLim',[0,600],'YTick',[0 200 400 600])
+% set(gca,'XGrid','On','YGrid','On','YTick',[0 200 400 600 800 1000])
+xlabel('Core depth (cm) ');
+ylabel('Number of Particles');
+% legend('Original abundance','Bioturbated abundance Species 1')
+%title('Abundance of Species 1')
+
+
+subplot(1, 3, 2), hold on
+for i = 1:exps           
+    plot(1:lngth,bioabu(i,:,2), 'Color', [1.0 0.8 0.8],'Linewidth',2.0)
+    mean_bioabu2 = mean_bioabu2+bioabu(i,:,2);
+end
+plot(1:lngth,oriabu(1,:,2),'k','Linewidth',3.0) % plot one of the original abu
+mean_bioabu2 = mean_bioabu2/exps;
+plot(1:lngth,mean_bioabu2, '-r','Linewidth',3.0)
+plot(1:lngth,numb*ones(lngth),'g')
+set(gca,'XGrid','On','YGrid','On', 'YLim',[0,500],'YTick',[0 100 200 300 400 500])
+% set(gca,'XGrid','On','YGrid','On', 'XLim',[0,200], 'YLim',[0,600],'YTick',[0 200 400 600])
+% set(gca,'XGrid','On','YGrid','On','YTick',[0 200 400 600 800 1000])
+xlabel('Core depth (cm) ');
+%ylabel('Number of Particles');
+% legend('Original abundance','Bioturbated abundance Species 2')
+%title('Abundance of Species 2')
+
+subplot(1, 3, 3), hold on
+for i = 1:exps           
+    plot(1:lngth,bioiso(i,:,1), 'Color', [0.8 0.8 1.0],'Linewidth',1.5)
+    plot(1:lngth,bioiso(i,:,2), 'Color', [1.0 0.8 0.8],'Linewidth',1.5)
+%  	mean_bioiso1 = mean_bioiso1+bioiso(i,:,1);
+%    mean_bioiso2 = mean_bioiso2+bioiso(i,:,2);
+end
+plot(1:lngth,oriiso(1,:,1),'k','Linewidth',2.0) % plot one of the original iso
+%mean_bioiso1 = mean_bioiso1/exps;
+%mean_bioiso2 = mean_bioiso2/exps;
+plot(1:lngth,mean_bioiso1, '-b','Linewidth',2.0)
+plot(1:lngth,mean_bioiso2, '--r','Linewidth',2.0)
+set(gca,'YDir','Reverse','XGrid','On','YGrid','On','Box','On', 'XLim',[0,200],'YTick',[1.0 1.5 2.0 2.5 3.0])
+xlabel('Core depth (cm) ');
+ylabel('\delta^{18}O');
+titletxt = ['Isotopes of Carriers 1+2, ',mxltext,...
+    ' cm Mixed Layer, ',numbtxt,' Carriers'];
+% title(titletxt)
+%legend('Original Isotopes','carriers 1','carriers 2')
+
+
+printfilename = [expname,'_',abutxt,'abu_',numbtxt,'carriers_',expstxt,'Exps_ABU_ISO'];
+% print('-depsc', printfilename); % save figure in this folder
+print('-depsc', ['output/',printfilename]);   % save figure in extra output folder
+
+end
 
 %% Plot abundance and isotope plots
 if(plot_abu_iso)
@@ -127,10 +253,10 @@ title('Abundance of Species 2')
 subplot(2,2,3), hold on
 for i = 1:exps           
     plot(1:lngth,bioiso(i,:,1), 'Color', [0.5 0.5 0.5],'Linewidth',1.5)
-    mean_bioiso1 = mean_bioiso1+bioiso(i,:,1);
+%    mean_bioiso1 = mean_bioiso1+bioiso(i,:,1);
 end
 plot(1:lngth,oriiso(1,:,1),'k','Linewidth',2.0) % plot one of the original iso
-mean_bioiso1 = mean_bioiso1/exps;
+%mean_bioiso1 = mean_bioiso1/exps;
 plot(1:lngth,mean_bioiso1, '-b','Linewidth',2.0)
 set(gca,'YDir','Reverse','XGrid','On','YGrid','On');%, 'XLim',[0,200])
 xlabel('Core depth (cm) ');
