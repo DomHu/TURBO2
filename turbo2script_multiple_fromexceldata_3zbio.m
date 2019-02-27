@@ -24,15 +24,16 @@ function turbo2script_multiple_fromexceldata_3zbio(data, nocarriers, noexps, exp
 %data = load(datafile);
 
 %%
-
+plot_ash_expl = false;      % plot ash example
+plot_iso_spec1 = true;       % plot the abundance and isotope figures?
 plot_abu_iso = false;       % plot the abundance and isotope figures?
 plot_just_mean = false;     % only plot the mean result, not every single experiment in grey
 plot_isotope_2species = false;     % plot isotope plots for both species
 
 age   = data(:,1);
-mxl1   = data(:,2);
-mxl2 = mxl1.*2;
-mxl3 = mxl1.*4;
+mxl1   = data(:,2); %.*11;
+mxl2 = data(:,2)./mxl1.*10; %.*13;
+mxl3 = data(:,2)./mxl1.*20; %.*15;
 abu   = data(:,3);
 iso   = data(:,4);
 lngth = length(data(:,1));
@@ -47,7 +48,11 @@ for i = 1:exps
     [oriabu2(i,:,:),bioabu2(i,:,:),oriiso2(i,:,:),bioiso2(i,:,:)] = turbo2(abu,iso,mxl2,numb);
     [oriabu3(i,:,:),bioabu3(i,:,:),oriiso3(i,:,:),bioiso3(i,:,:)] = turbo2(abu,iso,mxl3,numb);
 end
-%%
+% normalize bioabu:
+bioabu_norm = bioabu./nocarriers;
+bioabu2_norm = bioabu2./nocarriers;
+bioabu3_norm = bioabu3./nocarriers;
+
 %[oriabu1,bioabu1,oriiso1,bioiso1] = turbo2(abu,iso,mxl,numb);
 %[oriabu2,bioabu2,oriiso2,bioiso2] = turbo2(abu,iso,mxl,numb);
 % variable for mean results of mxl1
@@ -77,6 +82,7 @@ abutxt = num2str(max(abu),2);
 set(0,'DefaultAxesFontSize',16)
 
 %%  Plot isotope plots only and just for species 1 (no abundance change here)
+if(plot_iso_spec1)
 figure, hold on
 for i = 1:exps           
 % mxl1
@@ -130,6 +136,99 @@ save(['data/mat/',printfilename,'.mat'],'printfilename', 'lngth','bioiso','biois
 print('-depsc', ['output/',printfilename]);   % save figure in extra output folder
 % print('-dtiff',printfilename)
 % 
+end
+
+
+
+%%  Plot normalized abundance only and just for species 1 (no isotope change here)
+if(plot_ash_expl)
+% load data from Ruddiman et al. [1980]
+% data_V19_28=xlsread('data/0_turbo2input_10k_Ash_010219.xlsx','zbio=5','J10:K22');
+% data_V19_29=xlsread('data/0_turbo2input_10k_Ash_010219.xlsx','zbio=5','M10:N21');
+% data_V19_39=xlsread('data/0_turbo2input_10k_Ash_010219.xlsx','zbio=5','P10:Q23');
+% data_V19_40=xlsread('data/0_turbo2input_10k_Ash_010219.xlsx','zbio=5','S10:T23');
+% data_RC17_126=xlsread('data/0_turbo2input_10k_Ash_010219.xlsx','zbio=5','V10:W25');
+% data_E48_23=xlsread('data/0_turbo2input_10k_Ash_010219.xlsx','zbio=5','Y11:Z27');
+
+% relaive depth:
+data_V19_28=xlsread('data/0_turbo2input_10k_Ash_010219.xlsx','zbio=5','J30:K42');
+data_V19_29=xlsread('data/0_turbo2input_10k_Ash_010219.xlsx','zbio=5','M30:N41');
+data_V29_39=xlsread('data/0_turbo2input_10k_Ash_010219.xlsx','zbio=5','P30:Q43');
+data_V29_40=xlsread('data/0_turbo2input_10k_Ash_010219.xlsx','zbio=5','S30:T43');
+data_RC17_126=xlsread('data/0_turbo2input_10k_Ash_010219.xlsx','zbio=5','V30:W45');
+data_E48_23=xlsread('data/0_turbo2input_10k_Ash_010219.xlsx','zbio=5','Y30:Z47');
+
+
+
+figure, hold on
+%subplot(2,2,1), hold on
+for i = 1:exps           
+% mxl1
+%    plot(1:lngth,bioabu_norm(i,:,1), 'Color', [1.0 0.8 0.8],'Linewidth',1.5)
+    mean_bioabu1_mxl1 = mean_bioabu1_mxl1+bioabu_norm(i,:,1);
+% mxl2
+%    plot(1:lngth,bioabu2_norm(i,:,1), 'Color', [0.8 1.0 0.8],'Linewidth',1.5)
+    mean_bioabu1_mxl2 = mean_bioabu1_mxl2+bioabu2_norm(i,:,1);
+% mxl3
+%    plot(1:lngth,bioabu3_norm(i,:,1), 'Color', [0.8 0.8 1.0],'Linewidth',1.5)
+    mean_bioabu1_mxl3 = mean_bioabu1_mxl3+bioabu3_norm(i,:,1);
+end
+
+% plot relative depths:
+rel_depth = (1:lngth)-43;
+plot(rel_depth,oriabu(1,:,1)./nocarriers,'--k','Linewidth',2.0) % plot one of the original abu
+% plot(rel_depth-40,oriabu(1,:,1)./nocarriers,'--g','Linewidth',2.0) % plot one of the original abu
+% plot(rel_depth-45,oriabu(1,:,1)./nocarriers,'--b','Linewidth',2.0) % plot one of the original abu
+% plot normal core depth:
+% plot(1:lngth,oriabu(1,:,1)./nocarriers,'k','Linewidth',2.0) % plot one of the original abu
+% mxl1
+mean_bioabu1_mxl1 = mean_bioabu1_mxl1/exps;
+plot(rel_depth,mean_bioabu1_mxl1, '-r','Linewidth',2.0)
+% plot(1:lngth,mean_bioabu1_mxl1, '-r','Linewidth',2.0)
+% mxl2
+mean_bioabu1_mxl2 = mean_bioabu1_mxl2/exps;
+plot(rel_depth,mean_bioabu1_mxl2, '-g','Linewidth',2.0)
+% plot(1:lngth,mean_bioabu1_mxl2, '-g','Linewidth',2.0)
+% mxl3
+mean_bioabu1_mxl3 = mean_bioabu1_mxl3/exps;
+plot(rel_depth,mean_bioabu1_mxl3, '-b','Linewidth',2.0)
+hleg=legend('z_{bio}= 0','z_{bio}= 11','z_{bio}= 13','z_{bio}= 15');
+set(hleg,'FontSize',8);
+set(hleg,'Location','NorthEast');
+% plot(1:lngth,mean_bioabu1_mxl3, '-b','Linewidth',2.0)
+% plot vertical line of #species measured
+% plot(1:lngth,numb*ones(lngth),'g') 
+% plot observations
+% 0.5cm kyr-1
+plot(data_V29_39(:,1),data_V29_39(:,2),'ko','MarkerFaceColor','k') 
+plot(data_V29_40(:,1),data_V29_40(:,2),'k^','MarkerFaceColor','k') 
+% 2 - 2..5cm kyr-1
+% plot(data_RC17_126(:,1),data_RC17_126(:,2),'ko','MarkerFaceColor','k') 
+% plot(data_E48_23(:,1),data_E48_23(:,2),'k^','MarkerFaceColor','k') 
+% 7cm kyr-1
+% plot(data_V19_28(:,1),data_V19_28(:,2),'ko','MarkerFaceColor','k') 
+% plot(data_V19_29(:,1),data_V19_29(:,2),'k^','MarkerFaceColor','k') 
+set(gca,'XGrid','On','YGrid','On', 'YLim',[0, 0.2],'YTick',[0.0 0.05 0.1 0.15 0.2])
+% set(gca,'XGrid','On','YGrid','On', 'XLim',[0,200], 'YLim',[0,600],'YTick',[0 200 400 600])
+% set(gca,'XGrid','On','YGrid','On','YTick',[0 200 400 600 800 1000])
+xlim([-30 20])
+xlabel('Core depth (cm) ');
+ylabel('Normalized ash concentration');
+% ylabel('Number of Particles');
+% legend('Original abundance','Bioturbated abundance Species 1')
+txt = '0.5 cm kyr^{-1}';
+% txt = '2.0 - 2.5 cm kyr^{-1}';
+% txt = '7.0 cm kyr^{-1}';
+text(0.04, 0.90, txt, 'FontSize', 14, 'Units', 'normalized');
+% title('Abundance of Species 1')
+
+printfilename = ['3zbio_',expname,'_',abutxt,'abu_',numbtxt,'carriers_',expstxt,'Exps'];
+% print('-depsc', printfilename); % save figure in this folder
+save(['data/mat/',printfilename,'.mat'],'printfilename', 'lngth','bioiso','bioiso2','bioiso3', 'oriiso', 'mean_bioiso1_mxl1', 'mean_bioiso1_mxl2', 'mean_bioiso1_mxl3','expname', 'exps', 'bioabu','bioabu2','bioabu3', 'oriabu', 'oriabu2', 'oriabu3', 'mean_bioabu1_mxl1', 'mean_bioabu1_mxl2', 'mean_bioabu1_mxl3')
+print('-depsc', ['output/',printfilename]);   % save figure in extra output folder
+% print('-dtiff',printfilename)
+% 
+end
 
 %%  Plot isotope plots only for 2 species (just 1 mxl)
 if(plot_isotope_2species)

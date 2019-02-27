@@ -12,25 +12,31 @@ function run_multiple_turbo2_exps_fromexceldata_3zbio(datafile)
 % 
 carriers = 10000;
 Exps = 4;
+%% ASH experiment run with input from 0_turbo2input_10k_Ash_010219.xlsx
+% data=xlsread(datafile,'zbio=5','C4:F63');
+% turbo2script_multiple_fromexceldata_3zbio_ASH(data, carriers, Exps, 'ASH_experiment')
 
-data=xlsread(datafile,'zbio=5','C4:F263');
-turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'pointevent1')
 
-data=xlsread(datafile,'zbio=5','H4:K263');
-turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'step_sequence')
+% data=xlsread(datafile,'zbio=5','C4:F263');
+% turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'point_event')
 
-data=xlsread(datafile,'zbio=5','M4:P263');
-turbo2script_multiple_fromexceldata_3zbio(data, 1*carriers, Exps, 'gradual_change')
-
-data=xlsread(datafile,'zbio=5','R4:U263');
-turbo2script_multiple_fromexceldata_3zbio(data, 1*carriers, Exps, 'stepwise_down')
-
-data=xlsread(datafile,'zbio=5','W4:Z263');
-turbo2script_multiple_fromexceldata_3zbio(data, 1*carriers, Exps, '40kyrs')
-
-data=xlsread(datafile,'zbio=5','AC4:AF263');
-turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'multiple_points')
-
+% data=xlsread(datafile,'zbio=5','H4:K263');
+% turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'step_sequence')
+% 
+% data=xlsread(datafile,'zbio=5','M4:P263');
+% turbo2script_multiple_fromexceldata_3zbio(data, 1*carriers, Exps, 'gradual_change')
+% 
+% data=xlsread(datafile,'zbio=5','R4:U263');
+% turbo2script_multiple_fromexceldata_3zbio(data, 1*carriers, Exps, 'stepwise_down')
+% 
+% data=xlsread(datafile,'zbio=5','W4:Z263');
+% turbo2script_multiple_fromexceldata_3zbio(data, 1*carriers, Exps, '40kyrs')
+% 
+% data=xlsread(datafile,'zbio=5','AC4:AF263');
+% turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'multiple_points_2602')
+% NEW mulstiple point events
+data=xlsread(datafile,'zbio=5','AT4:AW263');
+turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'multiple_points_2602')
 
 
 

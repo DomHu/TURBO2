@@ -2,9 +2,10 @@
 clear
 % data = load('turbo2input_homogenousmixing.txt');
 % data = load('turbo2input_impulsesequence.txt');
+data = load('turbo2input_impulsesequence_20abu.txt');
 % data = load('turbo2input_stepsequence.txt');
 % data = load('turbo2input_termination.txt');
-data = load('data/2_turbo2input_1impulsesequence_5cm_5000species.txt');
+% data = load('data/2_turbo2input_1impulsesequence_5cm_5000species.txt');
 
 %%
 age   = data(:,1);
@@ -13,7 +14,7 @@ abu   = data(:,3);
 iso   = data(:,4);
 lngth = length(data(:,1));
 
-numb  = 5000;     % number of carriers to be measured
+numb  = 10;     % number of carriers to be measured
 
 %%
 [oriabu,bioabu,oriiso,bioiso] = turbo2(abu,iso,mxl,numb);
