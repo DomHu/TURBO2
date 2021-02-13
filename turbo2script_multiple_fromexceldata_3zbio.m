@@ -121,7 +121,7 @@ plot(1:lngth,mean_bioiso1_mxl3, '-b','Linewidth',2.0)
 
 
 %set(gca,'YDir','Reverse','XGrid','On','YGrid','On','Box','On', 'XLim',[0,200])
-set(gca,'YDir','Reverse','XGrid','On','YGrid','On','Box','On', 'XLim',[0,200], 'YLim',[1.0,3.0],'YTick',[1.0 1.5 2.0 2.5 3.0])
+set(gca,'YDir','Reverse','XGrid','On','YGrid','On','Box','On', 'YLim',[1.0,3.0],'YTick',[1.0 1.5 2.0 2.5 3.0])
 xlabel('Core depth (cm) ');
 ylabel('\delta^{18}O');
 titletxt = ['Isotopes of Carriers 1+2, ',mxltext,...

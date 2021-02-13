@@ -16,6 +16,18 @@ Exps = 4;
 % data=xlsread(datafile,'zbio=5','C4:F63');
 % turbo2script_multiple_fromexceldata_3zbio_ASH(data, carriers, Exps, 'ASH_experiment')
 
+% Artificial signal with 20, 40 and 100 kyr periode - 12.02.2021 - 1.1 Mio years
+data=xlsread(datafile,'Artificial_signal_12022021','C4:F1103');
+turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'ArtificialSignal_1202_1100')
+
+% % Laskar signal - 11.02.2021 - 1.1 Mio years
+% data=xlsread(datafile,'Laskar_Feb2021','R4:U1103');
+% turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'La2004_1E1T1P_1100')
+
+% % Laskar signal - 11.02.2021 - 1 Mio years
+% data=xlsread(datafile,'Laskar_Feb2021','C4:F1003');
+% turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'La2004_1E1T1P')
+
 
 % data=xlsread(datafile,'zbio=5','C4:F263');
 % turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'point_event')
@@ -35,9 +47,9 @@ Exps = 4;
 % data=xlsread(datafile,'zbio=5','AC4:AF263');
 % turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'multiple_points_2602')
 % NEW mulstiple point events
-data=xlsread(datafile,'zbio=5','AT4:AW263');
-turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'multiple_points_2602')
-
+% data=xlsread(datafile,'zbio=5','AT4:AW263');
+% turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'multiple_points_2602')
+% 
 
 
 %% 
