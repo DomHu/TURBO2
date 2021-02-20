@@ -16,9 +16,13 @@ Exps = 4;
 % data=xlsread(datafile,'zbio=5','C4:F63');
 % turbo2script_multiple_fromexceldata_3zbio_ASH(data, carriers, Exps, 'ASH_experiment')
 
-% Artificial signal with 20, 40 and 100 kyr periode - 12.02.2021 - 1.1 Mio years
-data=xlsread(datafile,'Artificial_signal_12022021','C4:F1103');
-turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'ArtificialSignal_1202_1100')
+% % Laskar 4.1 Mio signal - 19.02.2021
+data=xlsread(datafile,'Laskar_Feb2021','Y4:AB4103');
+turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'La2004_1E1T1P_4100_flipOri')
+
+% % Artificial signal with 20, 40 and 100 kyr periode - 12.02.2021 - 1.1 Mio years
+% data=xlsread(datafile,'Artificial_signal_12022021','C4:F1103');
+% turbo2script_multiple_fromexceldata_3zbio(data, carriers, Exps, 'ArtificialSignal_1202_1100')
 
 % % Laskar signal - 11.02.2021 - 1.1 Mio years
 % data=xlsread(datafile,'Laskar_Feb2021','R4:U1103');
